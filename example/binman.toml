@@ -1,0 +1,29 @@
+[defaults]
+bin_path = "~/.local/bin"
+self_update = true        # will update binman whenever it is run
+
+# For 'cli' type,
+# provide 'install' key with value the command that will run to install, can be multiline string.
+# 'update' key is optional, if omitted, it will run the 'install' value provided.
+[[cli]]
+install = '''
+curl -s https://ohmyposh.dev/install.sh | bash -s
+'''
+update = '''
+oh-my-posh upgrade
+'''
+
+# For 'script' type,
+# provide a 'script' key path to script bash file.
+# Inside the script file, it should have 2 functions: 'binman_install' and 'binman_update'.
+[[script]]
+type = "bash"       # scpecify script shell type
+path = "blesh.bash" # can be url path
+
+# For 'github_binary' type,
+# It will download the latest binary from github release page
+# 'version' key/value is optional.
+[[github_binary]]
+link = "Orange-OpenSource/hurl"
+# optional
+contains = "*-x86_64-unknonwn_linux-gnu" # keywords contains in binary
