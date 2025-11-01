@@ -1,22 +1,20 @@
-use std::env;
-
 use clap::Parser;
 
 /// Binary Manager, it will install or update binary from GitHub, CLI, or Bash Script.
-#[derive(Parser, Debug)]
-#[command(version, about, long_about =None)]
-struct Args {
+#[derive(Parser)]
+#[command(name = "binman")]
+#[command(version = "0.1")]
+#[command(about = "Install or update binary from GitHub, CLI, or Bash Script.")]
+struct Cli {
     /// Configuration file path
-    #[arg(short, long)]
-    file_path: String,
+    #[arg(short, long, value_name = "FILE")]
+    file: String,
 }
 
 
 fn main() {
-    let args: = Args::parse();
-    dbg!(args);
+    let cli = Cli::parse();
+    // dbg!(args);
 
-    for _ in 0..args.count {
-        println!("Hello {}!", args.name);
-    }
+    println!("{}", cli.file);
 }
